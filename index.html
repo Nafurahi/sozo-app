@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sōzō — Plateforme de Lecture & Écriture</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Application Shell : Barre de navigation supérieure -->
+  <header class="barre-nav">
+    <div class="logo-zone">
+      <h1 class="logo">Sōzō</h1>
+      <span class="slogan">Écrire & Lire</span>
+    </div>
+
+    <!-- Sélecteur d'espace de l'application -->
+    <nav class="onglets-application">
+      <button class="onglet active" onclick="changerOnglet('lecteur')">Espace Lecteur</button>
+      <button class="onglet" onclick="changerOnglet('auteur')">Espace Auteur</button>
+    </nav>
+
+    <!-- Dans index.html (Barre de navigation) -->
+<div class="actions-utilisateur">
+  <!-- On transforme le bouton en lien vers la page de connexion -->
+  <a href="connexion.html" class="btn-connexion">Se connecter</a>
+</div>
+  </header>
+
+  <main class="conteneur-application">
+
+    <!-- ESPACE LECTEUR -->
+    <section id="espace-lecteur" class="vue-espace active">
+      <header class="entete-section">
+        <h2>Bibliothèque & Découvertes</h2>
+        <input type="text" class="barre-recherche" placeholder="Rechercher un livre, un recueil, un auteur...">
+      </header>
+
+      <!-- Grille d'œuvres -->
+      <div class="grille-cartes">
+        
+        <article class="carte-oeuvre">
+          <div class="couverture-placeholder">
+            <span class="badge-type">Livre</span>
+          </div>
+          <div class="infos-carte">
+            <h3 class="titre-oeuvre">Le Voyage des Ombres</h3>
+            <p class="nom-auteur">Par Amani</p>
+            <div class="meta-carte">
+              <span class="favoris">★ 4.9 (120)</span>
+              <button class="btn-action">Lire</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="carte-oeuvre">
+          <div class="couverture-placeholder alt">
+            <span class="badge-type">Recueil</span>
+          </div>
+          <div class="infos-carte">
+            <h3 class="titre-oeuvre">Pensées du Soir</h3>
+            <p class="nom-auteur">Par K. Furaha</p>
+            <div class="meta-carte">
+              <span class="favoris">★ 4.7 (85)</span>
+              <button class="btn-action">Lire</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="carte-oeuvre">
+          <div class="couverture-placeholder alt">
+            <span class="badge-type">Recueil</span>
+          </div>
+          <div class="infos-carte">
+            <h3 class="titre-oeuvre">Pensées du Soir</h3>
+            <p class="nom-auteur">Par K. Furaha</p>
+            <div class="meta-carte">
+              <span class="favoris">★ 4.7 (85)</span>
+              <button class="btn-action">Lire</button>
+            </div>
+          </div>
+        </article>
+
+      <article class="carte-oeuvre">
+          <div class="couverture-placeholder alt">
+            <span class="badge-type">Recueil</span>
+          </div>
+          <div class="infos-carte">
+            <h3 class="titre-oeuvre">Pensées du Soir</h3>
+            <p class="nom-auteur">Par K. Furaha</p>
+            <div class="meta-carte">
+              <span class="favoris">★ 4.7 (85)</span>
+              <button class="btn-action">Lire</button>
+            </div>
+          </div>
+        </article>
+        
+        <article class="carte-oeuvre">
+          <div class="couverture-placeholder alt">
+            <span class="badge-type">Recueil</span>
+          </div>
+          <div class="infos-carte">
+            <h3 class="titre-oeuvre">Pensées du Soir</h3>
+            <p class="nom-auteur">Par K. Furaha</p>
+            <div class="meta-carte">
+              <span class="favoris">★ 4.7 (85)</span>
+              <button class="btn-action">Lire</button>
+            </div>
+          </div>
+        </article>
+
+      <article class="carte-oeuvre">
+          <div class="couverture-placeholder alt">
+            <span class="badge-type">Recueil</span>
+          </div>
+          <div class="infos-carte">
+            <h3 class="titre-oeuvre">Pensées du Soir</h3>
+            <p class="nom-auteur">Par K. Furaha</p>
+            <div class="meta-carte">
+              <span class="favoris">★ 4.7 (85)</span>
+              <button class="btn-action">Lire</button>
+            </div>
+          </div>
+        </article>
+        
+        <article class="carte-oeuvre">
+          <div class="couverture-placeholder alt">
+            <span class="badge-type">Recueil</span>
+          </div>
+          <div class="infos-carte">
+            <h3 class="titre-oeuvre">Pensées du Soir</h3>
+            <p class="nom-auteur">Par K. Furaha</p>
+            <div class="meta-carte">
+              <span class="favoris">★ 4.7 (85)</span>
+              <button class="btn-action">Lire</button>
+            </div>
+          </div>
+        </article>
+
+
+
+      </div>
+    </section>
+
+    <!-- ESPACE AUTEUR -->
+    <section id="espace-auteur" class="vue-espace">
+      <header class="entete-section">
+        <h2>Studio de Création</h2>
+        <button class="btn-primaire">+ Nouvelle Œuvre</button>
+      </header>
+
+      <div class="tableau-bord-auteur">
+        <div class="carte-statistique">
+          <h4>Œuvres publiées</h4>
+          <p class="chiffre-cle">3</p>
+        </div>
+        <div class="carte-statistique">
+          <h4>Lecteurs totaux</h4>
+          <p class="chiffre-cle">1,420</p>
+        </div>
+        <div class="carte-statistique">
+          <h4>Abonnés</h4>
+          <p class="chiffre-cle">310</p>
+        </div>
+      </div>
+
+      <!-- Zone de gestion du contenu de l'auteur -->
+      <div class="bloc-gestion">
+        <h3>Mes Manuscrits en cours</h3>
+        <ul class="liste-manuscrits">
+          <li class="item-manuscrit">
+            <div>
+              <strong>Les Murmures de la Nuit</strong>
+              <span class="statut-badge en-cours">Brouillon</span>
+            </div>
+            <button class="btn-secondaire">Éditer</button>
+          </li>
+          <li class="item-manuscrit">
+            <div>
+              <strong>Chroniques d'un Hiver</strong>
+              <span class="statut-badge publie">Publié</span>
+            </div>
+            <button class="btn-secondaire">Statistiques</button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE CONNEXION / INSCRIPTION -->
+  <div id="modal-connexion" class="modal-overlay">
+    <div class="modal-contenu">
+      <button class="fermer-modal" onclick="fermerModalConnexion()">&times;</button>
+      
+      <div class="choix-auth">
+        <button class="btn-mode-auth active" id="btn-tab-connexion" onclick="basculerModeAuth('connexion')">Connexion</button>
+        <button class="btn-mode-auth" id="btn-tab-inscription" onclick="basculerModeAuth('inscription')">Inscription</button>
+      </div>
+
+      <!-- Formulaire de Connexion -->
+      <form id="form-connexion" class="form-auth active">
+        <div class="champ-groupe">
+          <label for="email-connexion">Adresse e-mail</label>
+          <input type="email" id="email-connexion" placeholder="exemple@domaine.com" required>
+        </div>
+        <div class="champ-groupe">
+          <label for="pass-connexion">Mot de passe</label>
+          <input type="password" id="pass-connexion" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-primaire large">Se connecter</button>
+      </form>
+
+      <!-- Formulaire d'Inscription -->
+      <form id="form-inscription" class="form-auth">
+        <div class="champ-groupe">
+          <label>Je souhaite m'inscrire en tant que :</label>
+          <div class="choix-role">
+            <label><input type="radio" name="role" value="lecteur" checked> Lecteur</label>
+            <label><input type="radio" name="role" value="auteur"> Auteur</label>
+          </div>
+        </div>
+        <div class="champ-groupe">
+          <label for="nom-inscription">Nom d'utilisateur / Pseudo</label>
+          <input type="text" id="nom-inscription" placeholder="Ton pseudo" required>
+        </div>
+        <div class="champ-groupe">
+          <label for="email-inscription">Adresse e-mail</label>
+          <input type="email" id="email-inscription" placeholder="exemple@domaine.com" required>
+        </div>
+        <div class="champ-groupe">
+          <label for="pass-inscription">Mot de passe</label>
+          <input type="password" id="pass-inscription" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-primaire large">Créer mon compte</button>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

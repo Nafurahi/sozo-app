@@ -1,0 +1,389 @@
+/* Palette de couleurs (Format RGB uniquement) */
+:root {
+  --fond-blanc-casse: rgb(249, 246, 240);
+  --surface-carte: rgb(255, 255, 255);
+  --rouge-bordeaux: rgb(102, 34, 37);
+  --bordeaux-survol: rgb(80, 25, 28);
+  --dore: rgb(184, 138, 68);
+  --dore-clair: rgb(235, 218, 185);
+  --texte-sombre: rgb(45, 38, 35);
+  --texte-secondaire: rgb(115, 102, 92);
+  --bordure-douce: rgb(228, 220, 208);
+  --ombre-subtile: rgba(60, 40, 30, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--fond-blanc-casse);
+  background-image: url('https://i.pinimg.com/1200x/1e/ff/8c/1eff8c991c148e03dd945ae343755819.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  color: var(--texte-sombre);
+  line-height: 1.5;
+}
+
+/* En-tête de l'application */
+.barre-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  background-color: var(--surface-carte);
+  border-bottom: 2px solid var(--dore-clair);
+  box-shadow: 0 2px 10px var(--ombre-subtile);
+}
+
+.logo-zone {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.logo {
+  font-size: 28px;
+  font-family: 'Georgia', serif;
+  color: var(--rouge-bordeaux);
+}
+
+.slogan {
+  font-size: 12px;
+  color: var(--dore);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Onglets Lecteur / Auteur */
+.onglets-application {
+  display: flex;
+  gap: 8px;
+  background-color: var(--fond-blanc-casse);
+  padding: 4px;
+  border-radius: 30px;
+  border: 1px solid var(--bordure-douce);
+}
+
+.onglet {
+  padding: 8px 20px;
+  border: none;
+  background: none;
+  border-radius: 20px;
+  font-weight: 600;
+  color: var(--texte-secondaire);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.onglet.active {
+  background-color: var(--rouge-bordeaux);
+  color: var(--fond-blanc-casse);
+}
+
+/* Boutons principaux */
+.btn-connexion {
+  padding: 8px 18px;
+  background: transparent;
+  border: 1px solid var(--dore);
+  color: var(--dore);
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  
+}
+
+.btn-connexion:hover {
+  background-color: var(--dore-clair);
+}
+
+.btn-primaire {
+  padding: 10px 20px;
+  background-color: var(--rouge-bordeaux);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primaire:hover {
+  background-color: var(--bordeaux-survol);
+}
+
+.btn-primaire.large {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-secondaire {
+  padding: 6px 14px;
+  background-color: var(--fond-blanc-casse);
+  border: 1px solid var(--bordure-douce);
+  color: var(--texte-sombre);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Conteneur principal & Vues */
+.conteneur-application {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.vue-espace {
+  display: none;
+}
+
+.vue-espace.active {
+  display: block;
+}
+
+.entete-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.barre-recherche {
+  width: 320px;
+  padding: 10px 16px;
+  border: 1px solid var(--bordure-douce);
+  border-radius: 20px;
+  outline: none;
+  background-color: var(--surface-carte);
+}
+
+.barre-recherche:focus {
+  border-color: var(--dore);
+}
+
+/* Cartes d'œuvres */
+.grille-cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.carte-oeuvre {
+  background-color: var(--surface-carte);
+  border: 1px solid var(--bordure-douce);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--ombre-subtile);
+}
+
+.couverture-placeholder {
+  height: 160px;
+  background-color: var(--rouge-bordeaux);
+  position: relative;
+  padding: 12px;
+}
+
+.couverture-placeholder.alt {
+  background-color: var(--dore);
+}
+
+.badge-type {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgb(255, 255, 255);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.infos-carte {
+  padding: 16px;
+}
+
+.nom-auteur {
+  font-size: 13px;
+  color: var(--texte-secondaire);
+  margin-bottom: 12px;
+}
+
+.meta-carte {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favoris {
+  font-size: 12px;
+  color: var(--dore);
+  font-weight: bold;
+}
+
+.btn-action {
+  padding: 4px 12px;
+  background-color: var(--rouge-bordeaux);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Espace Auteur Dashboard */
+.tableau-bord-auteur {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.carte-statistique {
+  flex: 1;
+  background-color: var(--surface-carte);
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--dore);
+  box-shadow: 0 2px 8px var(--ombre-subtile);
+}
+
+.chiffre-cle {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--rouge-bordeaux);
+}
+
+.bloc-gestion {
+  background-color: var(--surface-carte);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--bordure-douce);
+}
+
+.liste-manuscrits {
+  list-style: none;
+  margin-top: 16px;
+}
+
+.item-manuscrit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--bordure-douce);
+}
+
+.statut-badge {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.statut-badge.en-cours {
+  background-color: var(--dore-clair);
+  color: var(--dore);
+}
+
+.statut-badge.publie {
+  background-color: rgb(220, 240, 220);
+  color: rgb(40, 120, 40);
+}
+
+/* Modal de Connexion */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 20, 15, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-contenu {
+  background-color: var(--surface-carte);
+  width: 360px;
+  padding: 30px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 8px 24px var(--ombre-subtile);
+  border-top: 4px solid var(--dore);
+}
+
+.fermer-modal {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--texte-secondaire);
+  cursor: pointer;
+}
+
+.choix-auth {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--bordure-douce);
+}
+
+.btn-mode-auth {
+  flex: 1;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: var(--texte-secondaire);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-mode-auth.active {
+  color: var(--rouge-bordeaux);
+  border-bottom: 2px solid var(--rouge-bordeaux);
+}
+
+.form-auth {
+  display: none;
+}
+
+.form-auth.active {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.champ-groupe {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.champ-groupe label {
+  font-size: 13px;
+  color: var(--texte-secondaire);
+}
+
+.champ-groupe input[type="email"],
+.champ-groupe input[type="text"],
+.champ-groupe input[type="password"] {
+  padding: 8px 12px;
+  border: 1px solid var(--bordure-douce);
+  border-radius: 4px;
+  outline: none;
+}
+
+.choix-role {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  margin-top: 4px;
+}

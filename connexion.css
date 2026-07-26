@@ -1,0 +1,281 @@
+:root {
+  --fond-eteint: rgb(18, 15, 14);
+  --fond-allume: rgb(38, 28, 24);
+  --couleur-lumiere: rgba(235, 190, 110, 0.25);
+  --couleur-lumiere-forte: rgb(235, 190, 110);
+  --bordeaux: rgb(102, 34, 37);
+  --bordeaux-survol: rgb(80, 25, 28);
+  --dore: rgb(184, 138, 68);
+  --texte-clair: rgb(245, 240, 232);
+  --texte-sourd: rgb(140, 125, 115);
+  --bordure-sombre: rgb(55, 45, 40);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--fond-eteint);
+  color: var(--texte-clair);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.6s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fond allumé */
+body[data-on="true"] {
+  background-color: var(--fond-allume);
+}
+
+/* Bouton Retour */
+.btn-retour {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  color: var(--texte-sourd);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.btn-retour:hover {
+  color: var(--dore);
+}
+
+/* Layout principal */
+.conteneur-login {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  max-width: 900px;
+  width: 90%;
+}
+
+/* DESIGN DE LA LAMPE */
+.zone-lampe {
+  position: relative;
+  width: 200px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+}
+
+.lampe {
+  position: relative;
+  width: 140px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.abat-jour {
+  width: 140px;
+  height: 70px;
+  background-color: rgb(240, 235, 225);
+  border-radius: 70px 70px 10px 10px;
+  position: relative;
+  z-index: 3;
+  box-shadow: inset 0 -5px 15px rgba(0,0,0,0.2);
+}
+
+.pied-lampe {
+  width: 8px;
+  height: 180px;
+  background-color: var(--dore);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.pied-lampe::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 12px;
+  background-color: var(--dore);
+  border-radius: 6px 6px 0 0;
+}
+
+/* Cordon d'allumage */
+.cordon {
+  position: absolute;
+  top: 65px;
+  right: 25px;
+  width: 2px;
+  height: 60px;
+  background-color: var(--texte-sourd);
+  z-index: 2;
+  transition: transform 0.15s ease;
+}
+
+.boule-cordon {
+  position: absolute;
+  bottom: -8px;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--dore);
+  border-radius: 50%;
+}
+
+.lampe:active .cordon {
+  transform: translateY(10px);
+}
+
+/* Halo lumineux quand la lampe est allumée */
+.lumiere {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0px;
+  height: 0px;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 280px solid var(--couleur-lumiere);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body[data-on="true"] .lumiere {
+  opacity: 1;
+}
+
+body[data-on="true"] .abat-jour {
+  background-color: rgb(255, 248, 220);
+  box-shadow: 0 0 30px var(--couleur-lumiere-forte);
+}
+
+/* CARTE FORMULAIRE */
+.carte-formulaire {
+  flex: 1;
+  background-color: rgba(28, 22, 20, 0.85);
+  border: 1px solid var(--bordure-sombre);
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  opacity: 0.4;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+body[data-on="true"] .carte-formulaire {
+  opacity: 1;
+  pointer-events: all;
+  border-color: var(--dore);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(184, 138, 68, 0.2);
+}
+
+.entete-form {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.logo-sozo {
+  font-family: 'Georgia', serif;
+  font-size: 32px;
+  color: var(--dore);
+}
+
+.sous-titre {
+  font-size: 13px;
+  color: var(--texte-sourd);
+  margin-top: 4px;
+}
+
+/* Sélecteur Lecteur / Auteur */
+.selecteur-role {
+  display: flex;
+  background-color: rgb(20, 16, 14);
+  padding: 4px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.btn-role {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  color: var(--texte-sourd);
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-role.active {
+  background-color: var(--bordeaux);
+  color: var(--texte-clair);
+}
+
+/* Champs du formulaire */
+.champ-groupe {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.champ-groupe label {
+  font-size: 13px;
+  color: var(--texte-sourd);
+}
+
+.champ-groupe input {
+  padding: 12px 16px;
+  background-color: rgb(20, 16, 14);
+  border: 1px solid var(--bordure-sombre);
+  border-radius: 8px;
+  color: var(--texte-clair);
+  outline: none;
+  font-size: 14px;
+}
+
+.champ-groupe input:focus {
+  border-color: var(--dore);
+}
+
+.btn-connexion {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--bordeaux);
+  color: var(--texte-clair);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-connexion:hover {
+  background-color: var(--bordeaux-survol);
+}
+
+.pied-carte {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--texte-sourd);
+}
+
+.pied-carte a {
+  color: var(--dore);
+  text-decoration: none;
+  font-weight: bold;
+}
