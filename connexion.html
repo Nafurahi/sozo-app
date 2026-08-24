@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sōzō — Connexion</title>
+  <link rel="stylesheet" href="connexion.css">
+</head>
+<body data-on="false">
+
+  <!-- Bouton pour retourner à l'accueil -->
+  <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
+
+  <div class="conteneur-login">
+    
+    <!-- Composant de la Lampe -->
+    <div class="zone-lampe">
+      <div class="lampe" id="interrupteur">
+        <div class="abat-jour"></div>
+        <div class="lumiere"></div>
+        <div class="pied-lampe"></div>
+        <!-- Cordon pour allumer/éteindre -->
+        <div class="cordon">
+          <div class="boule-cordon"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulaire de Connexion Sōzō -->
+    <div class="carte-formulaire" id="formulaire-login">
+      <div class="entete-form">
+        <h1 class="logo-sozo">Sōzō</h1>
+        <p class="sous-titre">Allumez la lampe pour vous connecter</p>
+      </div>
+
+      <!-- Choix Auteur / Lecteur -->
+      <div class="selecteur-role">
+        <button class="btn-role active" id="tab-lecteur" onclick="choisirRole('lecteur')">Lecteur</button>
+        <button class="btn-role" id="tab-auteur" onclick="choisirRole('auteur')">Auteur</button>
+      </div>
+
+      <form onsubmit="event.preventDefault();">
+        <div class="champ-groupe">
+          <label for="email">Adresse e-mail</label>
+          <input type="email" id="email" placeholder="exemple@domaine.com" required>
+        </div>
+
+        <div class="champ-groupe">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn-connexion">Se connecter</button>
+      </form>
+
+      <div class="pied-carte">
+        <p>Pas encore de compte ? <a href="#">S'inscrire</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="connexion.js"></script>
+</body>
+</html>
