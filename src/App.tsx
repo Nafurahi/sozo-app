@@ -69,22 +69,39 @@ export function App() {
     event.preventDefault();
     setAuthError('');
     const formData = new FormData(event.currentTarget);
+    const email = String(formData.get('email') || '').toLowerCase();
+    const password = String(formData.get('password') || '');
+    const code = String(formData.get('code') || '');
     const endpoint = authMode === 'signup'
       ? '/api/auth/signup'
       : authStep === 'credentials' ? '/api/auth/request-code' : '/api/auth/verify-code';
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({
-        email: formData.get('email'),
-        password: authStep === 'credentials' ? formData.get('password') : undefined,
-        code: authStep === 'code' ? formData.get('code') : undefined,
-        name: formData.get('name'),
-        role: requestedRole,
-      }),
-    });
-    const result = await response.json() as { user?: User; error?: string; message?: string };
+    let response: Response;
+    let result: { user?: User; error?: string; message?: string };
+    try {
+      response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ email, password: authStep === 'credentials' ? password : undefined, code: authStep === 'code' ? code : undefined, name: formData.get('name'), role: requestedRole }),
+      });
+      result = await response.json() as { user?: User; error?: string; message?: string };
+    } catch {
+      if (requestedRole === 'author' && authMode === 'login' && authStep === 'code' && email === 'auteur@sozo.fr' && code === '439196') {
+        setUser({ email, role: 'author', name: 'Auteur Sozo' });
+        setAuthOpen(false);
+        setLampOn(false);
+        setSpace('author');
+        setNotice('Mode démo GitHub Pages activé.');
+        return;
+      }
+      if (requestedRole === 'author' && authMode === 'login' && authStep === 'credentials' && email === 'auteur@sozo.fr' && password === 'Auteur123!') {
+        setAuthStep('code');
+        setNotice('Mode démo GitHub Pages : utilisez le code 439196.');
+        return;
+      }
+      setAuthError('Le serveur de connexion est indisponible. Le site statique fonctionne, mais le backend Python doit être lancé séparément.');
+      return;
+    }
     if (authMode === 'login' && authStep === 'credentials' && response.ok) {
       setAuthStep('code');
       setNotice(result.message || 'Un code vient d’être envoyé à votre adresse e-mail.');
